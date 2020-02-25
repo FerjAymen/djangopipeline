@@ -1,0 +1,33 @@
+version: '3'
+services:
+    promotiondb:
+        image: postgres
+        restart: always
+        container_name: promotiondb
+        ports:
+            - "5432:5432"
+        environment:
+            - DB_USER=postgres
+            - DB_PASS=postgres
+            - DB_NAME=postgres
+            - POSTGRES_PASSWORD=postgres
+#            - DB_HOST=postgres
+
+    web:
+        build: .
+        container_name: promotionapp
+        command: python manage.py migrate
+        command: python manage.py runserver 0.0.0.0:8000
+        ports: 
+            - "8000:8000"
+
+        depends_on:
+            - promotiondb
+
+        
+
+        
+
+        
+
+    

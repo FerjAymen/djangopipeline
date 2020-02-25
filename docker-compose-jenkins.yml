@@ -1,0 +1,10 @@
+version: '3'
+services: 
+    jenkins:
+        image: "jenkins/jenkins:lts"
+        container_name: jenkins
+        ports:
+            - "8091:8080"
+        restart: "always"
+        volumes: 
+            - /home/tunix/Desktop/JenkinsVolume:/var/jenkins_home
